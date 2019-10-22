@@ -1,0 +1,15 @@
+<h1>My Tasks</h1>
+<ol>
+  <% @tasks.each do |task| %>
+  <li>
+    <% completed = task.completed? ? 'checked.svg' : "empty.svg"  %>
+     <%= image_tag completed, alt: "alttext", width: '20px' %>
+    <%= link_to task.title, task_path(task)  %>
+    <%= link_to "Delete", task_path(task), method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  </li>
+  <% end %>
+</ol>
+
+<%= link_to "+ Add a new task", tasks_new_path  %>
+
